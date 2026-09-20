@@ -33,6 +33,7 @@
       <nav class="nav-links">
         <a href="#que-encontras">Qué encontrás</a>
         <a href="#publicaciones">Publicaciones</a>
+        <a href="#proyectos">Proyectos</a>
         <a href="roadmap.html">Roadmap</a>
         <a href="#sobre-mi">Sobre mí</a>
       </nav>
@@ -47,6 +48,7 @@
     <nav class="nav-drawer" id="nav-drawer" hidden>
       <a href="#que-encontras">Qué encontrás</a>
       <a href="#publicaciones">Publicaciones</a>
+      <a href="#proyectos">Proyectos</a>
       <a href="roadmap.html">Roadmap</a>
       <a href="#sobre-mi">Sobre mí</a>
     </nav>
@@ -355,12 +357,78 @@
   </div>
 </section>
 
+<!-- ───────── Proyectos ───────── -->
+<section class="band band-light" id="proyectos" style="padding-top:0">
+  <div class="container stack-2xl">
+    <div class="stack-lg">
+      <p class="eyebrow muted">Proyectos</p>
+      <h2 class="display-xl">Lo que construyo, no solo lo que enseño.</h2>
+      <p class="body-lg muted" style="max-width:58ch">
+        Herramientas que uso de verdad, con el código abierto. Las mismas piezas que
+        aparecen en el roadmap —servidores MCP, LLMs haciendo trabajo real— pero ya andando.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card-light project">
+        <p class="eyebrow">Finanzas · MCP</p>
+        <h3 class="display-md card-title">Finance Tracker</h3>
+        <p class="muted">
+          Dashboard de finanzas personales que lee extractos bancarios en PDF y Excel,
+          categoriza las transacciones y las grafica. Incluye un servidor MCP para
+          preguntarle por los gastos en lenguaje natural.
+        </p>
+        <div class="project-foot">
+          <div class="tag-row">
+            <span class="badge-neutral mono-label">Python</span>
+            <span class="badge-neutral mono-label">FastAPI</span>
+            <span class="badge-neutral mono-label">PostgreSQL</span>
+            <span class="badge-neutral mono-label">MCP</span>
+            <span class="badge-neutral mono-label">Docker</span>
+          </div>
+          <a class="card-link" href="https://github.com/Riccino22/finance-tracker"
+             target="_blank" rel="noopener">
+            Ver en GitHub
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card-light project">
+        <p class="eyebrow">Agentes · LLM</p>
+        <h3 class="display-md card-title">Property Agent</h3>
+        <p class="muted">
+          Captura avisos de alquiler desde el navegador con una extensión de Chrome,
+          extrae los datos con un LLM y los puntúa según ubicación y preferencias,
+          calculando distancias reales. También expone sus herramientas por MCP.
+        </p>
+        <div class="project-foot">
+          <div class="tag-row">
+            <span class="badge-neutral mono-label">Python</span>
+            <span class="badge-neutral mono-label">Flask</span>
+            <span class="badge-neutral mono-label">MongoDB</span>
+            <span class="badge-neutral mono-label">LLM</span>
+            <span class="badge-neutral mono-label">MCP</span>
+            <span class="badge-neutral mono-label">Chrome Extension</span>
+          </div>
+          <a class="card-link" href="https://github.com/Riccino22/property"
+             target="_blank" rel="noopener">
+            Ver en GitHub
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ───────── Sobre mí ───────── -->
 <section class="band band-light" id="sobre-mi">
   <div class="container">
     <div class="about-grid">
       <div>
-        <img class="about-portrait" src="imgs/brianpenny-ai-generated-8540913.jpg" alt="Riccardo" loading="lazy">
+        <img class="about-portrait" src="imgs/about-riccardo.webp"
+             alt="Riccardo trabajando frente a su laptop" width="800" height="800" loading="lazy">
         <div class="tag-row">
           <span class="badge-neutral mono-label">Python</span>
           <span class="badge-neutral mono-label">LangChain</span>
@@ -433,6 +501,7 @@
         <h3 class="eyebrow">Contenido</h3>
         <ul>
           <li><a href="#publicaciones">Publicaciones</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="roadmap.html">Roadmap</a></li>
           <li><a href="#que-encontras">Qué encontrás</a></li>
         </ul>

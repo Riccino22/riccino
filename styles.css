@@ -188,7 +188,7 @@ a{color:inherit;text-decoration:none}
    calcula sobre el tamaño previo a transformar. */
 .hero-net{
   width:100%;height:auto;overflow:visible;
-  transform:translateY(calc(-7% - 40px)) scale(1.18);
+  transform:translateY(calc(-7% - 90px)) scale(1.18);
 }
 .net-edges line{stroke-width:1;opacity:.2}
 .net-signals line{
@@ -256,6 +256,22 @@ a{color:inherit;text-decoration:none}
 }
 .article p.muted{margin:0}
 .article .spacer{margin-top:auto}
+
+/* Tarjetas de proyecto: el pie (tags + enlace) se ancla abajo para que
+   las dos tarjetas alineen aunque las descripciones midan distinto. */
+.project{display:flex;flex-direction:column}
+.project > p.muted{margin:0}
+.project-foot{margin-top:auto;padding-top:var(--s-xl)}
+.project-foot .tag-row{margin-top:0}
+.card-link{
+  display:inline-flex;align-items:center;gap:var(--s-sm);
+  margin-top:var(--s-xl);padding-bottom:3px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.055em;text-transform:uppercase;
+  border-bottom:1px solid var(--hairline);
+  transition:border-color .15s ease;
+}
+.card-link:hover{border-bottom-color:var(--ink)}
 
 /* ─────────────────────────────────────────────
    Sobre mí
