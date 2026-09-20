@@ -1,0 +1,330 @@
+/* Estilos compartidos por index.html y roadmap.html.
+   El gradiente de la red neuronal se aplica con atributos fill/stroke en el
+   propio SVG: en una hoja externa, url(#brand) resolvería contra este archivo
+   en vez de contra el documento y el degradado no pintaría. */
+
+/* ─────────────────────────────────────────────
+   Tokens — DESIGN.md
+   ───────────────────────────────────────────── */
+:root{
+  --primary:#000000;      --on-primary:#ffffff;
+  --ink:#000000;          --body:#959494;
+  --canvas:#ffffff;       --canvas-soft:#ebebeb;  --hairline:#ebebeb;
+  --canvas-dark:#010120;  --surface-dark-soft:#313641; --hairline-dark:#26263a;
+  --on-dark:#ffffff;
+  --orange:#fc4c02;       --magenta:#ef2cc1;      --periwinkle:#bdbbff; --mint:#c8f6f9;
+
+  --r-xs:3.25px; --r-sm:4px; --r-md:8px; --r-full:9999px;
+
+  --s-xxs:2px; --s-xs:4px; --s-sm:8px; --s-md:12px; --s-lg:16px;
+  --s-xl:20px; --s-2xl:24px; --s-3xl:32px; --s-4xl:44px; --s-5xl:48px; --s-section:80px;
+
+  --display:"Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --container:1280px;
+
+  /* Fondo del hero: tiempo de cada imagen y cuántas hay.
+     Al agregar o sacar una, actualizá --hero-count, el % del keyframe
+     hero-flip (= 100 / count) y la lista de nth-child de abajo. */
+  --hero-frame:.1s;
+  --hero-count:12;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:16px;font-weight:400;line-height:20.8px;letter-spacing:-0.16px;
+  font-feature-settings:"ss01";
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+
+/* ── Escala tipográfica ── */
+.display-xxl{font-size:clamp(40px,7vw,64px);font-weight:500;line-height:1.1;letter-spacing:-0.03em;margin:0}
+.display-xl{font-size:clamp(30px,4.6vw,40px);font-weight:500;line-height:1.2;letter-spacing:-0.02em;margin:0}
+.display-lg{font-size:clamp(24px,3vw,28px);font-weight:500;line-height:1.15;letter-spacing:-0.015em;margin:0}
+.display-md{font-size:22px;font-weight:500;line-height:25.3px;letter-spacing:-0.22px;margin:0}
+.body-lg{font-size:18px;font-weight:400;line-height:26px;letter-spacing:-0.18px;margin:0}
+.caption{font-size:14px;line-height:19.6px;letter-spacing:0;margin:0}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;line-height:11px;
+  letter-spacing:0.05em;text-transform:uppercase;margin:0;
+}
+.mono-label{font-family:var(--mono);font-size:11px;font-weight:500;line-height:15.4px;letter-spacing:0.04em;text-transform:uppercase}
+
+/* ── Layout ── */
+.container{max-width:var(--container);margin:0 auto;padding-inline:var(--s-3xl)}
+.band{padding-block:var(--s-section)}
+.band-dark{background:var(--canvas-dark);color:var(--on-dark)}
+.band-light{background:var(--canvas);color:var(--ink)}
+.stack-lg > * + *{margin-top:var(--s-lg)}
+.stack-2xl > * + *{margin-top:var(--s-2xl)}
+.muted{color:var(--body)}
+.muted-dark{color:rgba(255,255,255,.62)}
+
+/* ── Botones ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--s-sm);
+  font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
+  border-radius:var(--r-sm);border:1px solid transparent;cursor:pointer;
+  padding:14px var(--s-2xl);min-height:44px;
+  transition:opacity .15s ease,background-color .15s ease,transform .15s ease;
+}
+.btn:hover{opacity:.86}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--primary);color:var(--on-primary)}
+.btn-mint{background:var(--mint);color:var(--ink)}
+.btn-white{background:var(--canvas);color:var(--ink)}
+.btn-ghost-dark{background:var(--surface-dark-soft);color:var(--on-dark)}
+.btn-outline{background:var(--canvas);color:var(--ink);border-color:var(--hairline);border-radius:var(--r-xs)}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--s-md)}
+
+/* ── Badges ── */
+.badge-dark{
+  display:inline-flex;align-items:center;gap:var(--s-sm);
+  background:var(--surface-dark-soft);color:var(--on-dark);
+  border-radius:var(--r-sm);padding:6px var(--s-md);
+}
+.badge-neutral{
+  display:inline-flex;align-items:center;gap:var(--s-sm);
+  background:var(--canvas-soft);color:var(--ink);border:1px solid var(--hairline);
+  border-radius:var(--r-sm);padding:var(--s-xs) var(--s-sm);
+}
+.dot{width:6px;height:6px;border-radius:var(--r-full);background:var(--mint);flex:none}
+
+/* ─────────────────────────────────────────────
+   Nav
+   ───────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--canvas-dark);color:var(--on-dark);
+  border-bottom:1px solid var(--hairline-dark);
+  padding-block:var(--s-lg);
+  padding-top:calc(var(--s-lg) + env(safe-area-inset-top,0px));
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2xl)}
+.wordmark{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase}
+/* Solo el de la nav: la clase también la usa el logo del footer, que queda a 14px */
+.nav .wordmark{font-size:18px;letter-spacing:0.08em}
+.nav-links{display:flex;align-items:center;gap:var(--s-2xl)}
+.nav-links a{font-size:16px;color:rgba(255,255,255,.8)}
+.nav-links a:hover{color:var(--on-dark)}
+.nav-actions{display:flex;align-items:center;gap:var(--s-md)}
+.nav-actions .btn{padding:10px var(--s-lg);font-size:11px;letter-spacing:0.055em}
+.nav-toggle{
+  display:none;background:var(--surface-dark-soft);border:0;border-radius:var(--r-sm);
+  width:44px;height:44px;cursor:pointer;color:var(--on-dark);align-items:center;justify-content:center;
+}
+.nav-toggle span{display:block;width:18px;height:1.5px;background:currentColor;position:relative}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor}
+.nav-toggle span::before{top:-6px}
+.nav-toggle span::after{top:6px}
+.nav-drawer{border-top:1px solid var(--hairline-dark);margin-top:var(--s-lg);padding-top:var(--s-sm)}
+.nav-drawer a{display:block;padding:var(--s-md) 0;font-size:18px;color:rgba(255,255,255,.86)}
+
+/* ─────────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────────── */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding-block:calc(var(--s-section) + 16px) var(--s-section);
+}
+.hero > .container{position:relative;z-index:1}
+
+/* Secuencia de imágenes en cámara rápida, de fondo */
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-bg-frame{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  /* El desenfoque y la desaturación vienen horneados en los .webp
+     (scripts/build_hero_bg.py). Sin filter en runtime, el navegador
+     solo compone capas. */
+  opacity:0;
+  animation:hero-flip calc(var(--hero-frame) * var(--hero-count)) steps(1,end) infinite;
+}
+.hero-bg-frame:nth-child(1){animation-delay:0s}
+.hero-bg-frame:nth-child(2){animation-delay:calc(var(--hero-frame) * 1)}
+.hero-bg-frame:nth-child(3){animation-delay:calc(var(--hero-frame) * 2)}
+.hero-bg-frame:nth-child(4){animation-delay:calc(var(--hero-frame) * 3)}
+.hero-bg-frame:nth-child(5){animation-delay:calc(var(--hero-frame) * 4)}
+.hero-bg-frame:nth-child(6){animation-delay:calc(var(--hero-frame) * 5)}
+.hero-bg-frame:nth-child(7){animation-delay:calc(var(--hero-frame) * 6)}
+.hero-bg-frame:nth-child(8){animation-delay:calc(var(--hero-frame) * 7)}
+.hero-bg-frame:nth-child(9){animation-delay:calc(var(--hero-frame) * 8)}
+.hero-bg-frame:nth-child(10){animation-delay:calc(var(--hero-frame) * 9)}
+.hero-bg-frame:nth-child(11){animation-delay:calc(var(--hero-frame) * 10)}
+.hero-bg-frame:nth-child(12){animation-delay:calc(var(--hero-frame) * 11)}
+@keyframes hero-flip{
+  0%{opacity:.8}
+  8.3333%{opacity:0}   /* 100 / --hero-count */
+  100%{opacity:0}
+}
+.hero-bg-scrim{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(1,1,32,.92) 0%,rgba(1,1,32,.68) 52%,rgba(1,1,32,.5) 100%),
+    linear-gradient(180deg,rgba(1,1,32,.85) 0%,rgba(1,1,32,0) 28%,rgba(1,1,32,0) 68%,rgba(1,1,32,.9) 100%);
+}
+
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-5xl);align-items:center}
+.hero-copy{max-width:38ch}
+.hero-lead{max-width:46ch}
+
+/* ── Red neuronal del hero ──
+   Las aristas son estáticas; lo único que se anima es el dash de 18 de ellas
+   y la opacidad de los halos. Con pathLength="100" todas las líneas quedan
+   normalizadas, así un mismo keyframe mueve el pulso a la misma velocidad
+   sin importar el largo real de cada arista. */
+/* Se sube respecto del centro del hero para no colgar del borde inferior,
+   y se agranda. El -7% es proporcional al alto del SVG; los -40px son un
+   ajuste fijo encima. El scale no afecta al translateY, porque el % se
+   calcula sobre el tamaño previo a transformar. */
+.hero-net{
+  width:100%;height:auto;overflow:visible;
+  transform:translateY(calc(-7% - 40px)) scale(1.18);
+}
+.net-edges line{stroke-width:1;opacity:.2}
+.net-signals line{
+  stroke-width:2.4;stroke-linecap:round;
+  stroke-dasharray:5 95;
+  animation:net-signal 1.8s linear infinite;
+}
+@keyframes net-signal{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:-100}
+}
+
+.net-glow{opacity:.12}
+.net-nodes > g{animation:net-pulse 1.8s ease-in-out infinite}
+@keyframes net-pulse{
+  0%,100%{opacity:.75}
+  35%{opacity:1}
+}
+.social-row{display:flex;flex-wrap:wrap;gap:var(--s-sm);align-items:center}
+.social{
+  display:inline-flex;align-items:center;gap:var(--s-sm);
+  background:transparent;color:var(--on-dark);
+  border:1px solid var(--hairline-dark);border-radius:var(--r-sm);
+  padding:10px var(--s-lg);min-height:44px;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.055em;text-transform:uppercase;
+  transition:background-color .15s ease;
+}
+.social:hover{background:var(--surface-dark-soft)}
+.social svg{width:14px;height:14px;flex:none}
+
+/* ─────────────────────────────────────────────
+   Stat tiles
+   ───────────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.stat{border-radius:var(--r-sm);padding:var(--s-3xl);color:var(--ink)}
+.stat-mint{background:var(--mint)}
+.stat-peri{background:var(--periwinkle)}
+.stat-soft{background:var(--canvas-soft)}
+.stat-num{font-size:clamp(28px,3.4vw,40px);font-weight:500;line-height:1.2;letter-spacing:-0.8px;margin:0 0 var(--s-sm)}
+
+/* ─────────────────────────────────────────────
+   Cards
+   ───────────────────────────────────────────── */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-lg)}
+.card-light{
+  background:var(--canvas);color:var(--ink);
+  border:1px solid var(--hairline);border-radius:var(--r-sm);padding:var(--s-2xl);
+}
+.card-title{margin:var(--s-lg) 0 var(--s-sm)}
+.card-light .eyebrow{color:var(--body)}
+
+/* Article cards */
+.article{
+  background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-sm);
+  padding:var(--s-2xl);display:flex;flex-direction:column;
+}
+.article-thumb{
+  aspect-ratio:16/9;width:100%;object-fit:cover;
+  border-radius:var(--r-sm) var(--r-sm) 0 0;margin-bottom:var(--s-lg);background:var(--canvas-soft);
+}
+.article-byline{
+  margin:var(--s-lg) 0 0;padding-top:var(--s-lg);color:var(--body);
+  font-family:var(--mono);font-size:10px;line-height:14px;letter-spacing:0.05em;text-transform:uppercase;
+}
+.article p.muted{margin:0}
+.article .spacer{margin-top:auto}
+
+/* ─────────────────────────────────────────────
+   Sobre mí
+   ───────────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:var(--s-5xl);align-items:start}
+.about-portrait{aspect-ratio:1/1;width:100%;object-fit:cover;border-radius:var(--r-sm)}
+.about-body p{margin:0 0 var(--s-lg);font-size:18px;line-height:28px;letter-spacing:-0.18px}
+.about-body p:last-of-type{margin-bottom:0}
+.tag-row{display:flex;flex-wrap:wrap;gap:var(--s-sm);margin-top:var(--s-2xl)}
+
+/* ─────────────────────────────────────────────
+   Roadmap
+   ───────────────────────────────────────────── */
+.roadmap{border-top:1px solid var(--hairline-dark)}
+.road-row{
+  display:grid;grid-template-columns:140px 1fr auto;gap:var(--s-2xl);align-items:baseline;
+  padding:var(--s-2xl) 0;border-bottom:1px solid var(--hairline-dark);
+}
+.road-row .eyebrow{color:var(--periwinkle)}
+
+/* ─────────────────────────────────────────────
+   Footer
+   ───────────────────────────────────────────── */
+/* El footer es ahora el último elemento de la página, así que carga él
+   con el inset inferior que antes aportaba el wordmark gigante. */
+.footer{
+  background:var(--canvas);color:var(--ink);
+  padding-block:var(--s-section) calc(var(--s-5xl) + env(safe-area-inset-bottom,0px));
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--s-3xl)}
+.footer-col h3{margin:0 0 var(--s-lg);color:var(--body)}
+.footer-col ul{list-style:none;margin:0;padding:0}
+.footer-col li + li{margin-top:var(--s-md)}
+.footer-col a:hover{color:var(--body)}
+.footer-bottom{
+  display:flex;flex-wrap:wrap;gap:var(--s-lg);justify-content:space-between;
+  margin-top:var(--s-5xl);padding-top:var(--s-2xl);border-top:1px solid var(--hairline);color:var(--body);
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────────── */
+@media (max-width:991px){
+  .hero-grid{grid-template-columns:1fr;gap:var(--s-3xl)}
+  .hero-art{order:-1;max-width:420px}
+  .hero-net{transform:none}   /* apilado arriba del texto, no hace falta subirlo */
+  .hero-copy,.hero-lead{max-width:none}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:var(--s-3xl)}
+  .about-portrait{max-width:300px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links,.nav-actions{display:none}
+  .nav-toggle{display:inline-flex}
+}
+@media (max-width:767px){
+  :root{--s-section:56px}
+  .container{padding-inline:var(--s-lg)}
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .road-row{grid-template-columns:1fr;gap:var(--s-sm)}
+  .road-row .badge-dark{justify-self:start}
+  .btn-row .btn{width:100%}
+}
+
+/* Sin parpadeo ni señales para quien pide menos movimiento:
+   queda una sola imagen fija y la red neuronal estática. */
+@media (prefers-reduced-motion:reduce){
+  .hero-bg-frame{animation:none;opacity:0}
+  .hero-bg-frame:nth-child(1){opacity:.8}
+  .net-signals line,.net-nodes > g{animation:none}
+}
