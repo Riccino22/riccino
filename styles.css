@@ -42,7 +42,11 @@ body{
   font-feature-settings:"ss01";
   -webkit-font-smoothing:antialiased;
 }
-img{max-width:100%;display:block}
+/* height:auto es imprescindible porque las <img> llevan atributos width/height
+   (para que el navegador reserve el espacio y la página no salte al cargar).
+   Esos atributos se aplican como estilo, así que sin esto el alto queda fijo
+   en el valor del atributo y cualquier aspect-ratio se ignora. */
+img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
 
@@ -232,6 +236,7 @@ a{color:inherit;text-decoration:none}
 /* ─────────────────────────────────────────────
    Cards
    ───────────────────────────────────────────── */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-lg)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-lg)}
 .card-light{
@@ -246,9 +251,11 @@ a{color:inherit;text-decoration:none}
   background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-sm);
   padding:var(--s-2xl);display:flex;flex-direction:column;
 }
+/* 4:5 porque son las portadas de los carruseles, exportadas a ese formato.
+   Recortarlas a 16:9 le comería el título a cada una. */
 .article-thumb{
-  aspect-ratio:16/9;width:100%;object-fit:cover;
-  border-radius:var(--r-sm) var(--r-sm) 0 0;margin-bottom:var(--s-lg);background:var(--canvas-soft);
+  aspect-ratio:4/5;width:100%;object-fit:cover;
+  border-radius:var(--r-sm) var(--r-sm) 0 0;margin-bottom:var(--s-lg);background:var(--canvas-dark);
 }
 .article-byline{
   margin:var(--s-lg) 0 0;padding-top:var(--s-lg);color:var(--body);
@@ -256,6 +263,16 @@ a{color:inherit;text-decoration:none}
 }
 .article p.muted{margin:0}
 .article .spacer{margin-top:auto}
+
+/* Enlace estirado: el <a> del pie cubre toda la tarjeta con un ::after, así
+   se puede clickear el bloque entero pero queda un solo enlace en el árbol
+   de accesibilidad. Necesita el position:relative de abajo como referencia. */
+.article{position:relative}
+.article-foot{margin-top:auto;padding-top:var(--s-lg)}
+.article-foot .article-byline{margin:0;padding:0}
+.article .card-link{margin-top:var(--s-md)}
+.article .card-link::after{content:"";position:absolute;inset:0}
+.article:hover .card-link{border-bottom-color:var(--ink)}
 
 /* Tarjetas de proyecto: el pie (tags + enlace) se ancla abajo para que
    las dos tarjetas alineen aunque las descripciones midan distinto. */
@@ -319,7 +336,7 @@ a{color:inherit;text-decoration:none}
   .hero-art{order:-1;max-width:420px}
   .hero-net{transform:none}   /* apilado arriba del texto, no hace falta subirlo */
   .hero-copy,.hero-lead{max-width:none}
-  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr;gap:var(--s-3xl)}
   .about-portrait{max-width:300px}
@@ -330,7 +347,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width:767px){
   :root{--s-section:56px}
   .container{padding-inline:var(--s-lg)}
-  .grid-3,.grid-2{grid-template-columns:1fr}
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .road-row{grid-template-columns:1fr;gap:var(--s-sm)}
   .road-row .badge-dark{justify-self:start}

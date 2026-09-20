@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────
+#  Imágenes
+# ─────────────────────────────────────────────
+# El sitio solo usa .webp. Los originales (JPG/PNG de Unsplash, exports de
+# los carruseles, fotos sin procesar) pesan entre 10 y 20 veces más y ninguna
+# página los referencia, así que no se versionan.
+#
+# Si alguna vez necesitás versionar un original o un PNG que el sitio sí use
+# —un favicon, por ejemplo— agregá una excepción con "!" debajo, o forzalo
+# una sola vez con:  git add -f imgs/loquesea.png
+imgs/**/*.jpg
+imgs/**/*.jpeg
+imgs/**/*.png
+
+# Excepciones (descomentá y ajustá según haga falta):
+# !imgs/favicon.png
+
+# ─────────────────────────────────────────────
+#  Python — scripts de conversión de imágenes
+# ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ─────────────────────────────────────────────
+#  Sistema operativo
+# ─────────────────────────────────────────────
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+
+# ─────────────────────────────────────────────
+#  Editores
+# ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
