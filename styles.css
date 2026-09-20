@@ -300,14 +300,79 @@ a{color:inherit;text-decoration:none}
 .tag-row{display:flex;flex-wrap:wrap;gap:var(--s-sm);margin-top:var(--s-2xl)}
 
 /* ─────────────────────────────────────────────
-   Roadmap
-   ───────────────────────────────────────────── */
-.roadmap{border-top:1px solid var(--hairline-dark)}
-.road-row{
-  display:grid;grid-template-columns:140px 1fr auto;gap:var(--s-2xl);align-items:baseline;
-  padding:var(--s-2xl) 0;border-bottom:1px solid var(--hairline-dark);
+   Camino de conceptos (roadmap)
+   ─────────────────────────────────────────────
+   Serpentina en desktop, columna en móvil. Es un <ol> real: el "dibujo" son
+   la línea y los puntos, hechos con pseudo-elementos, así que el contenido
+   sigue siendo navegable por teclado, legible por lectores de pantalla e
+   indexable. Nada está posicionado en coordenadas fijas, por eso reflowea
+   en vez de necesitar zoom como los diagramas de ancho fijo. */
+.path{position:relative;list-style:none;margin:0;padding:0 0 0 44px}
+
+/* La línea del camino usa el gradiente de marca, el mismo objeto que la
+   red neuronal del hero. */
+.path::before{
+  content:"";position:absolute;top:10px;bottom:10px;left:7px;width:2px;
+  background:linear-gradient(180deg,var(--orange),var(--magenta),var(--periwinkle));
+  opacity:.5;
 }
-.road-row .eyebrow{color:var(--periwinkle)}
+.path-group{
+  margin:var(--s-3xl) 0 var(--s-lg);color:var(--periwinkle);
+  position:relative;
+}
+.path-group:first-child{margin-top:0}
+.path-node{position:relative;margin-bottom:var(--s-lg)}
+
+/* El punto sobre la línea */
+.path-node::before{
+  content:"";position:absolute;top:26px;left:-44px;
+  width:16px;height:16px;border-radius:var(--r-full);
+  background:var(--canvas-dark);border:2px solid var(--periwinkle);
+}
+.path-node.is-done::before{background:var(--periwinkle)}
+.path-node.is-now::before{
+  background:var(--mint);border-color:var(--mint);
+  box-shadow:0 0 0 5px rgba(200,246,249,.18);
+}
+.path-node.is-next::before{border-color:var(--surface-dark-soft)}
+
+.path-card{
+  position:relative;
+  background:var(--canvas-dark);border:1px solid var(--hairline-dark);
+  border-radius:var(--r-sm);padding:var(--s-2xl);
+}
+.path-card h3{margin:var(--s-xs) 0 var(--s-sm)}
+.path-card p{margin:0}
+.path-num{color:var(--periwinkle);opacity:.75}
+.path-badge{margin-top:var(--s-lg)!important}
+
+/* Los pendientes se leen igual que los publicados: la única diferencia es el
+   punto hueco sobre la línea y que no llevan enlace al post. */
+
+/* Enlace estirado, igual que en las tarjetas de publicaciones */
+.path-link{
+  display:inline-flex;align-items:center;gap:var(--s-sm);
+  margin-top:var(--s-lg);padding-bottom:3px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.055em;text-transform:uppercase;color:var(--on-dark);
+  border-bottom:1px solid var(--hairline-dark);
+  transition:border-color .15s ease;
+}
+.path-link::after{content:"";position:absolute;inset:0}
+.path-card:hover .path-link{border-bottom-color:var(--periwinkle)}
+
+@media (min-width:768px){
+  /* Serpentina: la línea pasa al centro y los nodos alternan a los lados */
+  .path{padding:0}
+  .path::before{left:50%;margin-left:-1px}
+  /* El lado viene como clase desde el HTML y no de nth-of-type, porque los
+     títulos de grupo también son <li> y desfasarían la alternancia. */
+  .path-node{width:calc(50% - 46px);margin-bottom:var(--s-lg)}
+  .path-node.lado-izq::before{left:auto;right:-54px}
+  .path-node.lado-der{margin-left:calc(50% + 46px)}
+  .path-node.lado-der::before{right:auto;left:-54px}
+  .path-group{text-align:center}
+}
 
 /* ─────────────────────────────────────────────
    Footer

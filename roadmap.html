@@ -49,50 +49,229 @@
   <div class="container stack-2xl">
     <div class="stack-lg">
       <p class="eyebrow" style="color:var(--periwinkle)">Roadmap</p>
-      <h1 class="display-xxl" style="max-width:16ch">Lo que viene, en orden.</h1>
+      <h1 class="display-xxl" style="max-width:17ch">Fundamentos para trabajar con LLMs y agentes.</h1>
       <p class="body-lg muted-dark" style="max-width:54ch">
-        El plan público del contenido. Cada bloque se publica completo: teoría, código
-        y el proceso de construcción.
+        Los 26 temas que hace falta dominar, en orden. Cada uno que ya salió enlaza
+        al post que lo explica; los que faltan son el plan de lo que viene.
       </p>
-    </div>
-
-    <div class="roadmap">
-      <div class="road-row">
-        <p class="eyebrow">Ahora</p>
-        <div>
-          <h2 class="display-md">Fundamentos de redes neuronales</h2>
-          <p class="muted-dark" style="margin:var(--s-sm) 0 0">Gradientes, backprop y las intuiciones que después se repiten en todo lo demás.</p>
-        </div>
-        <span class="badge-dark eyebrow"><span class="dot"></span>Publicándose</span>
-      </div>
-
-      <div class="road-row">
-        <p class="eyebrow">Próximo</p>
-        <div>
-          <h2 class="display-md">RAG en producción y su evaluación</h2>
-          <p class="muted-dark" style="margin:var(--s-sm) 0 0">Chunking, retrieval híbrido, reranking y métricas que no mienten.</p>
-        </div>
-        <span class="badge-dark eyebrow">En progreso</span>
-      </div>
-
-      <div class="road-row">
-        <p class="eyebrow">Después</p>
-        <div>
-          <h2 class="display-md">Agentes y servidores MCP</h2>
-          <p class="muted-dark" style="margin:var(--s-sm) 0 0">Tool calling, orquestación y cómo no armar un agente que se pierda solo.</p>
-        </div>
-        <span class="badge-dark eyebrow">Planificado</span>
-      </div>
-
-      <div class="road-row">
-        <p class="eyebrow">Después</p>
-        <div>
-          <h2 class="display-md">El proceso completo, de cero a deploy</h2>
-          <p class="muted-dark" style="margin:var(--s-sm) 0 0">Un proyecto entero grabado de punta a punta, con los errores incluidos.</p>
-        </div>
-        <span class="badge-dark eyebrow">Planificado</span>
+      <p class="eyebrow" style="color:var(--periwinkle)">10 de 26 publicados</p>
+      <div class="btn-row">
+        <a class="btn btn-ghost-dark" href="https://github.com/Riccino22/roadmap"
+           target="_blank" rel="noopener">Ver el roadmap en GitHub</a>
       </div>
     </div>
+
+    <ol class="path">
+      <li class="path-group"><h2 class="eyebrow">Fundamentos del modelo</h2></li>
+      <li class="path-node lado-izq is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">01</p>
+          <h3 class="display-md">LLMs</h3>
+          <p class="muted-dark">Qué es un LLM, proveedores, librerías</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7667414161881582862" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: LLMs">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-der is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">02</p>
+          <h3 class="display-md">Parámetros</h3>
+          <p class="muted-dark">Parámetros del modelo (7B, 120B, etc.)</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7661131694287719694" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Parámetros">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">03</p>
+          <h3 class="display-md">Tokens</h3>
+          <p class="muted-dark">Tokens, tokenización, streaming</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7660747303589874958" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Tokens">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-der is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">04</p>
+          <h3 class="display-md">Ventana de contexto</h3>
+          <p class="muted-dark">Contexto, límites, olvido</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7661545583848541453" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Ventana de contexto">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">05</p>
+          <h3 class="display-md">System prompt</h3>
+          <p class="muted-dark">Rol, reglas, formato</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">06</p>
+          <h3 class="display-md">Determinismo y temperatura</h3>
+          <p class="muted-dark">Sampling y no-determinismo</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7661125250213514510" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Determinismo y temperatura">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-group"><h2 class="eyebrow">Comunicación con el modelo</h2></li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">07</p>
+          <h3 class="display-md">Prompt engineering</h3>
+          <p class="muted-dark">Zero-shot, few-shot, role prompting</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">08</p>
+          <h3 class="display-md">Context engineering</h3>
+          <p class="muted-dark">Diseñar todo el contexto, SDD</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7661835073930398990" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Context engineering">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">09</p>
+          <h3 class="display-md">Structured outputs</h3>
+          <p class="muted-dark">JSON contra schema</p>
+        </div>
+      </li>
+      <li class="path-group"><h2 class="eyebrow">Cómo razonan los modelos</h2></li>
+      <li class="path-node lado-izq is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">10</p>
+          <h3 class="display-md">Chain of thought</h3>
+          <p class="muted-dark">CoT, ToT, Self-Consistency</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7664110683826539789" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Chain of thought">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-der is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">11</p>
+          <h3 class="display-md">Modelos de reasoning</h3>
+          <p class="muted-dark">o1, o3, R1, extended thinking</p>
+        </div>
+      </li>
+      <li class="path-group"><h2 class="eyebrow">Dándole conocimiento al modelo</h2></li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">12</p>
+          <h3 class="display-md">RAG</h3>
+          <p class="muted-dark">Retrieval-Augmented Generation, embeddings, vector DBs</p>
+        </div>
+      </li>
+      <li class="path-group"><h2 class="eyebrow">Dándole capacidades al modelo</h2></li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">13</p>
+          <h3 class="display-md">Tool calling</h3>
+          <p class="muted-dark">Function calling, code execution</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">14</p>
+          <h3 class="display-md">MCP</h3>
+          <p class="muted-dark">Model Context Protocol</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7672408701935815950" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: MCP">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-group"><h2 class="eyebrow">Agentes y orquestación</h2></li>
+      <li class="path-node lado-izq is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">15</p>
+          <h3 class="display-md">Agentes</h3>
+          <p class="muted-dark">Qué es un agente, workflow vs agent</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7674524020863159565" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Agentes">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+      <li class="path-node lado-der is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">16</p>
+          <h3 class="display-md">Arquitecturas de agentes</h3>
+          <p class="muted-dark">ReAct, Reflexion, HITL</p>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">17</p>
+          <h3 class="display-md">Patrones de orquestación</h3>
+          <p class="muted-dark">Chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">18</p>
+          <h3 class="display-md">Memoria de agentes</h3>
+          <p class="muted-dark">Corto y largo plazo, Agentic RAG</p>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">19</p>
+          <h3 class="display-md">Harness engineering</h3>
+          <p class="muted-dark">Diseño del entorno del agente</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">20</p>
+          <h3 class="display-md">Skills</h3>
+          <p class="muted-dark">Conocimiento procedural reutilizable</p>
+        </div>
+      </li>
+      <li class="path-group"><h2 class="eyebrow">Realidad de producción</h2></li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">21</p>
+          <h3 class="display-md">Evals</h3>
+          <p class="muted-dark">Tests para sistemas no-determinísticos</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">22</p>
+          <h3 class="display-md">Observabilidad</h3>
+          <p class="muted-dark">Traces, costos, latencia, drift en producción</p>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">23</p>
+          <h3 class="display-md">Guardrails y seguridad</h3>
+          <p class="muted-dark">Prompt injection, privacidad</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">24</p>
+          <h3 class="display-md">Costos, latencia y caching</h3>
+          <p class="muted-dark">Prompt caching, optimización</p>
+        </div>
+      </li>
+      <li class="path-node lado-izq is-next">
+        <div class="path-card">
+          <p class="eyebrow path-num">25</p>
+          <h3 class="display-md">Fine-tuning</h3>
+          <p class="muted-dark">Cuándo (y cuándo no) hacer fine-tuning</p>
+        </div>
+      </li>
+      <li class="path-node lado-der is-done">
+        <div class="path-card">
+          <p class="eyebrow path-num">26</p>
+          <h3 class="display-md">Open source vs cerrados</h3>
+          <p class="muted-dark">Llama, Qwen, DeepSeek vs APIs</p>
+          <a class="path-link" href="https://www.tiktok.com/@riccinojosa/photo/7669249196033084685" target="_blank" rel="noopener"
+             aria-label="Ver en TikTok: Open source vs cerrados">Ver en TikTok <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </li>
+    </ol>
 
     <div>
       <p class="eyebrow muted-dark" style="margin-bottom:var(--s-md)">Enterate cuando salga cada bloque</p>
